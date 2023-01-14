@@ -29,7 +29,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><form action="/logout" method="POST">
               @csrf
-              <button type="submit" class="dropdown-item "><i class="bi bi-box-arrow-in-right"></i> Logout</button>
+              <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i> Logout</button>
             </form></li>    
             @else
             <li><a class="dropdown-item nav-link" href="/login">Log In</a></li>
