@@ -19,21 +19,23 @@
           <li class="nav-item">
             <a class="nav-link" href="/publisher/all">Publisher</a>
           </li>
+        </ul>
+        <ul class="dropdown-list me-5" style="list-style: none; margin-bottom: -2px;">
           @auth
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Welcome {{ auth()->user()->name }}
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><form action="/logout" method="POST">
-                  @csrf
-                  <button type="submit" class="dropdown-item "><i class="bi bi-box-arrow-in-right"></i> Logout</button>
-                </form></li>    
-                @else
-                <li><a class="dropdown-item nav-link {{ ($active === "login")? 'active' : '' }}" href="/login">Log In</a></li>
-              </ul>
-            </li>
-            @endauth
+        <li class="nav-item dropdown text-white">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome {{ auth()->user()->name }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><form action="/logout" method="POST">
+              @csrf
+              <button type="submit" class="dropdown-item "><i class="bi bi-box-arrow-in-right"></i> Logout</button>
+            </form></li>    
+            @else
+            <li><a class="dropdown-item nav-link" href="/login">Log In</a></li>
+          </ul>
+        </li>
+        @endauth
         </ul>
       </div>
     </div>
