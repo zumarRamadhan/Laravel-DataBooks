@@ -37,6 +37,7 @@ Route::group(["prefix" => "/publisher"], function(){
 
 Route::group(["prefix"=>"/login"], function(){
     Route::get('/', [LoginController::class, 'index']);
+    Route::post('/authenticate', [LoginController::class, 'authenticate']);
 });
 
 Route::group(["prefix"=>"/register"], function(){

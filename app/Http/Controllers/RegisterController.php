@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -16,13 +18,23 @@ class RegisterController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
+        // $request->validate([
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'password'=>'required',
+        // ]);
+
+        // $data = User::create($request->all());
+        $validateData = $request->validate([
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
         ]);
 
-        $data = User::create($request->all());
+        $validateData['password'] = Hash::make($validateData['password']);
+
+        User::create($validateData);
+        // $request->session()->flash('Success', 'Registration, Success');
 
         return redirect('/book/all')->with('success', 'Register Success');
     }
