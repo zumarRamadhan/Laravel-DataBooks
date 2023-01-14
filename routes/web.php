@@ -5,6 +5,8 @@ use App\Models\Book;
 use App\Models\Publisher;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 
 Route::get('/', function () {
@@ -32,3 +34,13 @@ Route::group(["prefix" => "/publisher"], function(){
     Route::get('/all', [PublisherController::class, 'index']);
     Route::get('/detail/{publisher}', [PublisherController::class, 'show']);
 });
+
+Route::group(["prefix"=>"/login"], function(){
+    Route::get('/', [LoginController::class, 'index']);
+});
+
+Route::group(["prefix"=>"/register"], function(){
+    Route::get('/', [RegisterController::class,'index']);
+    Route::post('/create', [RegisterController::class,'create']);
+});
+
