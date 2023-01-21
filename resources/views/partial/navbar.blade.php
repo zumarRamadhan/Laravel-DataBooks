@@ -27,7 +27,7 @@
             Welcome {{ auth()->user()->name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><form action="login/logout" method="POST">
+            <li><form action="/login/logout" method="POST">
               @csrf
               <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i> Logout</button>
             </form></li>    

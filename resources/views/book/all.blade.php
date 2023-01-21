@@ -31,12 +31,16 @@
                 <td>{{$book->pengarang}}</td>
                 <td>{{$book->harga}}</td>
                 <td>
+                    @auth
                     <a type="button" class="btn btn-primary" href="/book/detail/{{$book->id}}" >Detail</a>
                     <a type="button" class="btn btn-warning"  href="/book/edit/{{ $book->id }}" >Edit</a>
                     <form action="/book/delete/{{ $book->id }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger" onclick="return confirm('Are you sure ?')">Hapus</button>
+                    @else
+
+                    @endauth
                     </form>
                 </td>
                 </tr>
