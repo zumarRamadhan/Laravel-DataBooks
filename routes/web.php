@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Models\Book;
 use App\Models\Publisher;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PublisherController;
 
 
 Route::get('/', function () {
@@ -46,3 +47,6 @@ Route::group(["prefix"=>"/register"], function(){
     Route::post('/create', [RegisterController::class,'create']);
 });
 
+Route::group(["prefix"=>"/dashboard"], function(){
+    Route::get('/', [DashboardController::class,'index']);
+});

@@ -13,7 +13,11 @@
 
     <div class="card">
         <table class="table table-hover">
+            @auth
             <a type="button" class="btn btn-primary w-25 m-3" href="/book/create/" >Add New Data</a>
+            @else
+
+            @endauth
             <thead>
                 <tr class="bg-dark text-white">
                 <th scope="col">id</th>
