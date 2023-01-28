@@ -32,7 +32,7 @@
               @csrf
               <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-in-right"></i> Logout</button>
             </form></li>
-            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+            <li><a class="dropdown-item" href="/dashboard/home">Dashboard</a></li>
             @else
             <li><a class="dropdown-item nav-link" href="/login">Log In</a></li>
           </ul>

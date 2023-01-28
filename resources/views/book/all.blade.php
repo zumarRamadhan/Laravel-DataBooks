@@ -1,5 +1,15 @@
 {{-- @dd($books) --}}
+
+{{-- @if (Route::is('dashboard.book.all'))
+
+@extends('dashboard.layouts.main')
+
+
+
+@endif --}}
+
 @extends('layouts.main')
+
 
 @section('content')
 <div class="container">
@@ -13,18 +23,21 @@
 
     <div class="card">
         <table class="table table-hover">
-            @auth
+            @if (Route::is('dashboard.book.all'))     
             <a type="button" class="btn btn-primary w-25 m-3" href="/book/create/" >Add New Data</a>
-            @else
+            @endif
+          
 
-            @endauth
+           
             <thead>
                 <tr class="bg-dark text-white">
                 <th scope="col">id</th>
                 <th scope="col">Nama Buku</th>
                 <th scope="col">Pengarang</th>
                 <th scope="col">Harga</th>
-                <th scope="col">Action</th>
+                @if (Route::is('dashboard.book.all'))
+                    <th scope="col">Action</th>
+                @endif
                 </tr>
             </thead>
             <tbody>
@@ -34,19 +47,22 @@
                 <td>{{$book->nama}}</td>
                 <td>{{$book->pengarang}}</td>
                 <td>{{$book->harga}}</td>
-                <td>
-                    @auth
+                
+                @if (Route::is('dashboard.book.all'))
+                
+                    <td>
                     <a type="button" class="btn btn-primary" href="/book/detail/{{$book->id}}" >Detail</a>
-                    <a type="button" class="btn btn-warning"  href="/book/edit/{{ $book->id }}" >Edit</a>
-                    <form action="/book/delete/{{ $book->id }}" method="post" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-danger" onclick="return confirm('Are you sure ?')">Hapus</button>
-                    @else
+                        <a type="button" class="btn btn-warning"  href="/book/edit/{{ $book->id }}" >Edit</a>
+                        <form action="/book/delete/{{ $book->id }}" method="post" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure ?')">Hapus</button>
+                
+                        </form>
+                    </td>
+                    
+                @endif
 
-                    @endauth
-                    </form>
-                </td>
                 </tr>
             @endforeach
             </tbody>

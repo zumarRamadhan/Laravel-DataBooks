@@ -2,18 +2,18 @@
     <div class="position-sticky pt-3 sidebar-sticky">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
+          <a class="nav-link" aria-current="page" href="/dashboard/home">
             <span data-feather="home" class="align-text-bottom"></span>
             Dashboard
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/dashboard/book/all">
             <span data-feather="file" class="align-text-bottom"></span>
-            Orders
+            Book
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link" href="#">
             <span data-feather="shopping-cart" class="align-text-bottom"></span>
             Products
@@ -70,6 +70,6 @@
             Year-end sale
           </a>
         </li>
-      </ul>
+      </ul> --}}
     </div>
   </nav>

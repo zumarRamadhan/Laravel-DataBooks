@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\Dashboard\DashboardSiswaController;
 
 
 Route::get('/', function () {
@@ -48,5 +49,17 @@ Route::group(["prefix"=>"/register"], function(){
 });
 
 Route::group(["prefix"=>"/dashboard"], function(){
-    Route::get('/', [DashboardController::class,'index']);
+    Route::get('/home', function(){
+        return view('dashboard.home');
+    })->middleware('auth');
+
+    Route::group(["prefix"=>"/book"], function(){
+        Route::get('/all', [DashboardSiswaController::class, 'index'])->name('dashboard.book.all')->middleware('auth');
+        Route::get('/detail/{book}', [DashboardSiswaController::class, 'show'])->middleware('auth');
+        Route::post('/add', [BookController::class, 'store'])->middleware('auth'); 
+        Route::get('/create', [BookController::class, 'create'])->middleware('auth'); 
+        Route::delete('/delete/{book}', [BookController::class, 'destroy'])->middleware('auth'); 
+        Route::get('/edit/{book}', [BookController::class, 'edit'])->middleware('auth'); 
+        Route::post('/update/{book}', [BookController::class, 'update'])->middleware('auth'); 
+    });
 });
