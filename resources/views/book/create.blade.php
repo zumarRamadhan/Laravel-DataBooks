@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <h2 align="center" class="mt-5">Add Book Data</h2>
-    <form class="mt-3" method="post" action="/book/add">
+    <form class="mt-3" method="post" action="/dashboard/book/add">
         @csrf
       <div class="mb-3">
         <label class="mb-2">Nama Buku</label>

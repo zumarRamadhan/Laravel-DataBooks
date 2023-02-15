@@ -1,18 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Publisher;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class BookController extends Controller
+class DashboardBookController extends Controller
 {
     public function index()
     {
-        return view ('book.all', [
+        // dd(request('search'));
+        
+        // $book_data = Book::latest();
+
+        // if (request('search')) {
+        //     $book_data->where('nama', 'like', '%' . request('search'). '%');
+        // }
+        return view('book.all',[
             'publisher'=>Publisher::all(),
-            'books' => Book::latest()->filter(request(['search', 'category']))->get()
+            'books' => Book::latest()->filter(request(['search', 'publisher']))->paginate(5)
         ]);
     }
 
@@ -41,13 +49,13 @@ class BookController extends Controller
         ]);
 
         Book::create($validateData);
-        return redirect('/book/all')->with('success', 'Book has been addes !');
+        return redirect('/dashboard/book/all')->with('success', 'Book has been addes !');
     }
 
     public function destroy(Book $book)
     {
         Book::destroy($book->id);
-        return redirect('/book/all')->with('success', 'Data has been deleted');
+        return redirect('/dashboard/book/all')->with('success', 'Data has been deleted');
     }
 
     public function edit(Book $book)
@@ -71,6 +79,6 @@ class BookController extends Controller
         Book::where('id', $book->id)
                     ->update($validateData);
 
-        return redirect('/book/all')->with('success', 'Data has been updated !');
+        return redirect('/dashboard/book/all')->with('success', 'Data has been updated !');
     }
 }

@@ -25,7 +25,8 @@
           <input type="text" class="form-control" id="release" name="release" value="{{ $book->release }}" readonly>
         </div>
         
-        <button type="submit" href="/book" class="btn btn-secondary">Close</button>
+        <a class="btn btn-secondary" type="button" href="/dashboard/book/all">Close</a>
+        {{-- <button type="submit" href="/dashboard/book/all" class="btn btn-secondary">Close</button> --}}
       </form>
     </div>
     
