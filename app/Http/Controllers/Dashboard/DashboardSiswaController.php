@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use Illuminate\Http\Request;
 use App\Models\Book;
-use App\Models\Publisher;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class BookController extends Controller
+class DashboardSiswaController extends Controller
 {
     public function index()
     {
-        return view ('book.all', [
-            'publisher'=>Publisher::all(),
-            'books' => Book::latest()->filter(request(['search', 'category']))->get()
+        return view('book.all',[
+            'books' => Book::all()
         ]);
     }
 
